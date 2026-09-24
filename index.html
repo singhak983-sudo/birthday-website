@@ -1,0 +1,2111 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday! ✨ | 2026 Interactive Experience</title>
+  <meta name="description" content="An ultra-modern, interactive 2026 birthday celebration greeting for someone truly extraordinary.">
+  <meta name="theme-color" content="#070913">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <style>
+    /* ==========================================================
+       2026 ULTRA-MODERN BIRTHDAY EXPERIENCE - DESIGN SYSTEM
+       ========================================================== */
+    :root {
+      --bg-space: #070913;
+      --bg-depth: #0b0f22;
+      --bg-surface: rgba(18, 24, 46, 0.75);
+      --bg-surface-hover: rgba(28, 36, 68, 0.85);
+      --bg-glass: rgba(255, 255, 255, 0.04);
+      --bg-glass-strong: rgba(255, 255, 255, 0.08);
+
+      --border-glass: rgba(255, 255, 255, 0.09);
+      --border-glow: rgba(139, 92, 246, 0.4);
+      --border-accent: rgba(244, 63, 94, 0.4);
+
+      --color-purple: #8b5cf6;
+      --color-purple-light: #c4b5fd;
+      --color-rose: #f43f5e;
+      --color-rose-light: #fda4af;
+      --color-cyan: #06b6d4;
+      --color-cyan-light: #67e8f9;
+      --color-gold: #f59e0b;
+      --color-gold-light: #fde68a;
+      --color-emerald: #10b981;
+
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --glow-purple: 0 0 35px rgba(139, 92, 246, 0.35);
+      --glow-rose: 0 0 35px rgba(244, 63, 94, 0.35);
+      --glow-gold: 0 0 35px rgba(245, 158, 11, 0.45);
+      --glow-cyan: 0 0 35px rgba(6, 182, 212, 0.35);
+
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+      --font-serif: "Playfair Display", "Georgia", "Times New Roman", serif;
+      --font-hand: "Caveat", "Brush Script MT", "Comic Sans MS", cursive;
+      --font-mono: ui-monospace, "SF Mono", "Menlo", monospace;
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-space);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 0%, #171b3b 0%, var(--bg-space) 60%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-space); }
+    ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.6); }
+
+    /* Canvas Overlays */
+    #stars-canvas {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0; pointer-events: none;
+    }
+    #confetti-canvas {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 9990; pointer-events: none;
+    }
+
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 8px; height: 8px; background: #ffffff; border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 10000;
+      transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s;
+      box-shadow: 0 0 10px #fff;
+    }
+    .cursor-aura {
+      width: 36px; height: 36px; border: 1.5px solid rgba(139, 92, 246, 0.55);
+      background: rgba(139, 92, 246, 0.08); border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); backdrop-filter: blur(1px);
+    }
+    body:hover .cursor-aura.active {
+      width: 58px; height: 58px; border-color: rgba(244, 63, 94, 0.7);
+      background: rgba(244, 63, 94, 0.12);
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .cursor-dot, .cursor-aura { display: none !important; }
+    }
+
+    /* Top Navigation */
+    .navbar {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 36px); max-width: 1180px; height: 64px;
+      background: rgba(14, 18, 36, 0.75); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-glass);
+      border-radius: var(--radius-full); z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 18px; box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      color: var(--text-main); font-weight: 700; font-size: 0.95rem;
+    }
+    .brand-icon {
+      width: 34px; height: 34px; background: linear-gradient(135deg, var(--color-purple), var(--color-rose));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
+    }
+    .brand-edition {
+      font-size: 0.7rem; color: var(--color-purple-light); background: rgba(139, 92, 246, 0.16);
+      padding: 3px 8px; border-radius: var(--radius-full); border: 1px solid rgba(139, 92, 246, 0.3);
+      text-transform: uppercase; font-family: var(--font-mono);
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-link {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; padding: 8px 14px; border-radius: var(--radius-full);
+      transition: var(--transition-smooth);
+    }
+    .nav-link:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.08); }
+    .nav-link.active {
+      color: var(--text-main); background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .action-icon-btn {
+      width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass); color: var(--text-main);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      font-size: 1.1rem; transition: var(--transition-smooth);
+    }
+    .action-icon-btn:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+    .action-icon-btn.active { background: rgba(139, 92, 246, 0.25); border-color: var(--color-purple); }
+
+    /* Equalizer Waves */
+    .music-waves { display: flex; align-items: flex-end; gap: 2.5px; height: 14px; }
+    .wave-bar { width: 2.5px; background: var(--color-cyan); border-radius: 2px; height: 4px; }
+    .music-playing .wave-bar:nth-child(1) { animation: soundBar 0.8s infinite alternate ease-in-out; }
+    .music-playing .wave-bar:nth-child(2) { animation: soundBar 0.6s infinite alternate ease-in-out 0.2s; }
+    .music-playing .wave-bar:nth-child(3) { animation: soundBar 0.9s infinite alternate ease-in-out 0.4s; }
+    @keyframes soundBar { 0% { height: 3px; } 100% { height: 14px; } }
+
+    .nav-customize-btn {
+      background: linear-gradient(135deg, var(--color-purple), var(--color-rose));
+      color: white; border: none; padding: 8px 16px; border-radius: var(--radius-full);
+      font-size: 0.84rem; font-weight: 600; cursor: pointer; display: flex; align-items: center;
+      gap: 6px; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35); transition: var(--transition-smooth);
+    }
+    .nav-customize-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(244, 63, 94, 0.5); }
+    @media (max-width: 900px) { .nav-links, .brand-edition { display: none; } }
+
+    /* Gatekeeper Portal */
+    #cosmic-portal {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 50% 50%, #151b3a 0%, #060812 85%);
+      z-index: 9998; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 24px; text-align: center;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #cosmic-portal.portal-unlocked { opacity: 0; transform: scale(1.1); pointer-events: none; }
+    .portal-badge {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;
+      font-family: var(--font-mono); background: rgba(139, 92, 246, 0.15);
+      color: var(--color-purple-light); border: 1px solid rgba(139, 92, 246, 0.3);
+      padding: 6px 14px; border-radius: var(--radius-full); margin-bottom: 24px;
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    .portal-title {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 800; letter-spacing: -1px;
+      line-height: 1.15; margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 30%, #c4b5fd 70%, #f43f5e 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; max-width: 760px;
+    }
+    .portal-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary);
+      max-width: 580px; margin-bottom: 42px; line-height: 1.6;
+    }
+    .scanner-wrapper {
+      position: relative; width: 140px; height: 140px; display: flex;
+      align-items: center; justify-content: center; cursor: pointer; user-select: none;
+    }
+    .scanner-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .scanner-track { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 4; }
+    .scanner-bar {
+      fill: none; stroke: url(#portalGradient); stroke-width: 5; stroke-linecap: round;
+      stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 0.1s linear;
+    }
+    .scanner-core {
+      width: 106px; height: 106px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(139, 92, 246, 0.35), rgba(15, 20, 42, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.15); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+    }
+    .scanner-wrapper:active .scanner-core, .scanner-wrapper.is-holding .scanner-core {
+      transform: scale(0.96); box-shadow: 0 0 35px rgba(244, 63, 94, 0.6);
+    }
+    .scanner-icon { font-size: 2.2rem; margin-bottom: 2px; }
+    .scanner-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; color: var(--color-purple-light); font-family: var(--font-mono); }
+    .portal-instruction { margin-top: 22px; font-size: 0.88rem; color: var(--text-muted); }
+    .portal-bypass-btn {
+      margin-top: 30px; background: transparent; border: 1px solid var(--border-glass);
+      color: var(--text-secondary); font-size: 0.8rem; padding: 7px 18px;
+      border-radius: var(--radius-full); cursor: pointer; transition: var(--transition-smooth);
+    }
+    .portal-bypass-btn:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.05); }
+
+    /* Layout */
+    .main-container {
+      position: relative; z-index: 10; width: 100%; max-width: 1180px;
+      margin: 0 auto; padding: 120px 24px 80px; display: flex; flex-direction: column; gap: 120px;
+    }
+    .section { width: 100%; position: relative; scroll-margin-top: 100px; }
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 52px; }
+    .section-pill {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(139, 92, 246, 0.12);
+      color: var(--color-purple-light); border: 1px solid rgba(139, 92, 246, 0.28);
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      font-family: var(--font-mono); padding: 6px 16px; border-radius: var(--radius-full); margin-bottom: 16px;
+    }
+    .section-title { font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 800; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 16px; color: #fff; }
+    .section-desc { font-size: clamp(1rem, 1.6vw, 1.18rem); color: var(--text-secondary); line-height: 1.6; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 20%, #c4b5fd 55%, #f43f5e 90%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, #fef08a 10%, #f59e0b 60%, #b45309 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gradient-cyan {
+      background: linear-gradient(135deg, #a5f3fc 10%, #06b6d4 60%, #0284c7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* Hero */
+    .hero-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero-announcement {
+      display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass); padding: 8px 20px; border-radius: var(--radius-full);
+      font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 28px;
+    }
+    .hero-badge-tag {
+      background: linear-gradient(135deg, var(--color-rose), var(--color-purple));
+      color: white; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full);
+    }
+    .hero-title { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 24px; max-width: 980px; }
+    .recipient-name { display: inline-block; position: relative; padding: 0 4px; }
+    .recipient-name::after {
+      content: ''; position: absolute; left: 0; bottom: 6px; width: 100%; height: 8px;
+      background: rgba(244, 63, 94, 0.35); border-radius: 4px; z-index: -1; transform: rotate(-1deg);
+    }
+    .hero-tagline { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--text-secondary); max-width: 740px; line-height: 1.6; margin-bottom: 40px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-bottom: 64px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-purple), var(--color-rose));
+      color: white; font-weight: 700; font-size: 1rem; padding: 14px 30px; border-radius: var(--radius-full);
+      border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 6px 28px rgba(244, 63, 94, 0.4); transition: var(--transition-smooth); text-decoration: none;
+    }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 36px rgba(244, 63, 94, 0.6); }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06); color: var(--text-main); font-weight: 600; font-size: 1rem;
+      padding: 14px 26px; border-radius: var(--radius-full); border: 1px solid var(--border-glass);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; transition: var(--transition-smooth);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-3px); }
+
+    /* Bento */
+    .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
+    @media (max-width: 992px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .bento-grid { grid-template-columns: 1fr; } }
+    .bento-card {
+      background: var(--bg-surface); border: 1px solid var(--border-glass); border-radius: var(--radius-md);
+      padding: 26px 22px; text-align: left; position: relative; overflow: hidden; backdrop-filter: blur(16px);
+      transition: var(--transition-smooth);
+    }
+    .bento-card:hover { transform: translateY(-6px); border-color: var(--border-glow); box-shadow: 0 16px 36px rgba(0,0,0,0.4), var(--glow-purple); }
+    .bento-icon { font-size: 1.8rem; margin-bottom: 16px; display: inline-block; }
+    .bento-value { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .bento-label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+    .bento-subtext { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Cake */
+    .cake-experience { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .cake-stage {
+      position: relative; width: 320px; height: 380px; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end; margin-bottom: 40px;
+    }
+    .cake-pedestal {
+      width: 300px; height: 22px; background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
+      border-radius: 50%; box-shadow: 0 16px 40px rgba(0,0,0,0.8), 0 0 30px rgba(139, 92, 246, 0.3);
+      position: relative; z-index: 1; border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .cake-tier-1 {
+      width: 250px; height: 85px; background: linear-gradient(180deg, #2b1b4d 0%, #151126 100%);
+      border-radius: 18px 18px 24px 24px; position: relative; z-index: 2; border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+    .cake-drip-gold {
+      position: absolute; top: -2px; left: 0; width: 100%; height: 28px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 28" fill="%23f59e0b"><path d="M0,0 L250,0 C240,16 230,22 220,10 C210,24 195,26 185,12 C175,25 160,28 150,14 C140,24 125,26 115,10 C105,24 90,26 80,12 C70,25 55,27 45,14 C35,26 20,24 10,12 C5,18 0,10 0,0 Z"/></svg>');
+      background-size: 100% 100%;
+    }
+    .cake-tier-2 {
+      width: 190px; height: 75px; background: linear-gradient(180deg, #38153c 0%, #1c0e24 100%);
+      border-radius: 16px 16px 20px 20px; position: relative; z-index: 3; margin-bottom: -6px; border: 1px solid rgba(244, 63, 94, 0.25);
+    }
+    .cake-drip-rose {
+      position: absolute; top: -2px; left: 0; width: 100%; height: 24px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 24" fill="%23f43f5e"><path d="M0,0 L190,0 C180,14 170,20 160,10 C150,22 135,24 125,12 C115,22 100,24 90,10 C80,22 65,24 55,10 C45,22 30,24 20,10 C10,18 0,12 0,0 Z"/></svg>');
+      background-size: 100% 100%;
+    }
+    .cake-tier-3 {
+      width: 130px; height: 65px; background: linear-gradient(180deg, #102642 0%, #0b1526 100%);
+      border-radius: 14px 14px 16px 16px; position: relative; z-index: 4; margin-bottom: -6px; border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+    .cake-drip-cyan {
+      position: absolute; top: -2px; left: 0; width: 100%; height: 22px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 22" fill="%2306b6d4"><path d="M0,0 L130,0 C120,12 110,18 100,8 C90,18 75,20 65,10 C55,18 40,20 30,10 C20,18 10,10 0,0 Z"/></svg>');
+      background-size: 100% 100%;
+    }
+    .candles-row { position: absolute; top: 100px; display: flex; gap: 22px; z-index: 5; }
+    .candle {
+      position: relative; width: 10px; height: 52px;
+      background: repeating-linear-gradient(45deg, #ffffff, #ffffff 4px, #f59e0b 4px, #f59e0b 8px);
+      border-radius: 4px 4px 0 0;
+    }
+    .candle::after { content: ''; position: absolute; top: -7px; left: 4px; width: 2px; height: 7px; background: #475569; }
+    .candle-flame {
+      position: absolute; top: -28px; left: -5px; width: 20px; height: 28px;
+      background: radial-gradient(circle at 50% 70%, #ffffff 0%, #fef08a 35%, #f59e0b 65%, #ef4444 95%);
+      border-radius: 50% 50% 25% 25% / 70% 70% 30% 30%;
+      box-shadow: 0 0 20px #f59e0b, 0 0 40px #f43f5e;
+      animation: flameFlicker 1.8s infinite ease-in-out alternate; cursor: pointer; transition: 0.4s ease;
+    }
+    @keyframes flameFlicker {
+      0% { transform: scale(1) rotate(-2deg); }
+      50% { transform: scale(1.08, 0.94) rotate(3deg); }
+      100% { transform: scale(1.04, 0.98) rotate(2deg); }
+    }
+    .candles-extinguished .candle-flame { opacity: 0; transform: scale(0); pointer-events: none; }
+    .smoke-puff { position: absolute; top: -20px; left: 1px; width: 8px; height: 8px; background: rgba(220, 225, 235, 0.6); border-radius: 50%; opacity: 0; }
+    .candles-extinguished .smoke-puff { animation: smokeRise 2.5s forwards ease-out; }
+    @keyframes smokeRise {
+      0% { opacity: 0.8; transform: translate(0, 0) scale(1); }
+      50% { opacity: 0.4; transform: translate(-8px, -25px) scale(2.2); }
+      100% { opacity: 0; transform: translate(12px, -60px) scale(4); }
+    }
+
+    .cake-controls { display: flex; flex-direction: column; align-items: center; gap: 16px; z-index: 10; }
+    .blow-btn {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6); color: white; font-size: 1.1rem;
+      font-weight: 700; padding: 16px 36px; border-radius: var(--radius-full); border: none;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 12px;
+      box-shadow: 0 6px 28px rgba(6, 182, 212, 0.4); transition: var(--transition-smooth);
+    }
+    .blow-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 36px rgba(6, 182, 212, 0.6); }
+    .blow-alt-options { display: flex; align-items: center; gap: 14px; font-size: 0.85rem; color: var(--text-muted); }
+    .mic-btn {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); color: var(--text-secondary);
+      padding: 6px 14px; border-radius: var(--radius-full); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem;
+    }
+    .mic-btn.listening { background: rgba(244, 63, 94, 0.2); border-color: var(--color-rose); color: white; }
+    .relight-btn {
+      display: none; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass);
+      color: var(--color-gold-light); padding: 10px 22px; border-radius: var(--radius-full);
+      font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: var(--transition-smooth);
+    }
+
+    .wish-granted-card {
+      display: none; width: 100%; max-width: 600px; margin-top: 36px;
+      background: linear-gradient(135deg, rgba(20, 26, 54, 0.95), rgba(35, 18, 48, 0.95));
+      border: 1px solid rgba(245, 158, 11, 0.4); border-radius: var(--radius-md); padding: 28px;
+      text-align: center; box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(245, 158, 11, 0.25);
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .wish-title { font-size: 1.4rem; font-weight: 800; color: var(--color-gold-light); margin-bottom: 12px; }
+    .wish-affirmation-text { font-size: 1.05rem; color: var(--text-main); line-height: 1.6; font-style: italic; margin-bottom: 20px; font-family: var(--font-serif); }
+    .fortune-refresh-btn {
+      background: rgba(245, 158, 11, 0.15); color: var(--color-gold-light); border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 7px 18px; border-radius: var(--radius-full); font-size: 0.84rem; cursor: pointer;
+    }
+
+    /* Memories */
+    .memories-container { width: 100%; }
+    .memories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 36px 28px; perspective: 1200px; }
+    .polaroid-card {
+      background: #ffffff; padding: 16px 16px 24px; border-radius: 4px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45); cursor: pointer; position: relative;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .polaroid-card:nth-child(1) { transform: rotate(-2.5deg); }
+    .polaroid-card:nth-child(2) { transform: rotate(1.8deg); }
+    .polaroid-card:nth-child(3) { transform: rotate(-1.5deg); }
+    .polaroid-card:nth-child(4) { transform: rotate(2.4deg); }
+    .polaroid-card:nth-child(5) { transform: rotate(-2deg); }
+    .polaroid-card:hover {
+      transform: translateY(-12px) rotate(0deg) scale(1.04) !important;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 92, 246, 0.35); z-index: 20;
+    }
+    .washi-tape {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 24px; background: rgba(254, 240, 138, 0.7);
+      border-left: 2px dashed rgba(202, 138, 4, 0.4); border-right: 2px dashed rgba(202, 138, 4, 0.4); z-index: 5;
+    }
+    .polaroid-photo { width: 100%; height: 230px; background: #0f172a; border-radius: 2px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .polaroid-photo svg, .polaroid-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .polaroid-caption { margin-top: 16px; text-align: center; font-family: var(--font-hand); font-size: 1.45rem; color: #1e293b; }
+    .polaroid-date { font-family: var(--font-mono); font-size: 0.72rem; color: #64748b; text-align: center; margin-top: 4px; }
+
+    .add-memory-card {
+      background: rgba(255, 255, 255, 0.03); border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 30px; min-height: 320px; cursor: pointer; text-align: center; transition: var(--transition-smooth);
+    }
+    .add-memory-card:hover { background: rgba(255, 255, 255, 0.07); border-color: var(--color-purple); transform: translateY(-6px); }
+    .add-icon-circle {
+      width: 54px; height: 54px; border-radius: 50%; background: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--color-purple); display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--color-purple-light); margin-bottom: 14px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(5, 7, 18, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      z-index: 9995; display: flex; align-items: center; justify-content: center; padding: 24px;
+      opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .modal-box {
+      background: var(--bg-surface); border: 1px solid var(--border-glow); border-radius: var(--radius-lg);
+      max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 36px; position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), var(--glow-purple); transform: scale(0.95); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open .modal-box { transform: scale(1); }
+    .modal-close-btn {
+      position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); color: var(--text-main);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem;
+    }
+    .modal-photo-preview { width: 100%; height: 260px; border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 24px; background: #0f172a; }
+    .modal-photo-preview svg, .modal-photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-memory-tag {
+      display: inline-block; font-size: 0.75rem; font-family: var(--font-mono); background: rgba(244, 63, 94, 0.15);
+      color: var(--color-rose-light); border: 1px solid rgba(244, 63, 94, 0.3); padding: 4px 12px; border-radius: var(--radius-full); margin-bottom: 12px;
+    }
+    .modal-memory-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+    .modal-memory-date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; font-family: var(--font-mono); }
+    .modal-memory-story { font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; }
+    .modal-soundtrack-pill {
+      display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass); padding: 10px 16px; border-radius: var(--radius-md); font-size: 0.85rem; color: var(--color-cyan-light);
+    }
+
+    /* Scratch Cards */
+    .scratch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+    @media (max-width: 860px) { .scratch-grid { grid-template-columns: 1fr; } }
+    .scratch-card-wrapper {
+      position: relative; height: 240px; border-radius: var(--radius-md); overflow: hidden;
+      border: 1px solid var(--border-glass); background: var(--bg-surface); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); user-select: none;
+    }
+    .scratch-secret {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 24px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: radial-gradient(circle at 50% 50%, #201a48, #0e1124); z-index: 1;
+    }
+    .secret-badge {
+      font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-gold-light);
+      background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 12px;
+    }
+    .secret-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #ffffff; }
+    .secret-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; cursor: crosshair; touch-action: none; transition: opacity 0.4s ease; }
+    .scratch-hint {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 0.75rem;
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255, 255, 255, 0.7);
+      background: rgba(0, 0, 0, 0.4); padding: 4px 12px; border-radius: var(--radius-full); pointer-events: none; z-index: 3;
+    }
+
+    .accolade-box {
+      background: var(--bg-surface); border: 1px solid var(--border-glass); border-radius: var(--radius-md);
+      padding: 36px; text-align: center; max-width: 800px; margin: 0 auto; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+    .accolade-quote {
+      font-size: 1.35rem; font-weight: 600; line-height: 1.6; color: #ffffff; font-family: var(--font-serif);
+      font-style: italic; margin-bottom: 24px; min-height: 70px; display: flex; align-items: center; justify-content: center;
+    }
+    .accolade-btn {
+      background: linear-gradient(135deg, var(--color-purple), var(--color-rose)); color: white;
+      font-weight: 700; font-size: 0.95rem; padding: 12px 28px; border-radius: var(--radius-full); border: none;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(244, 63, 94, 0.35);
+    }
+
+    /* Envelope */
+    .envelope-section { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .envelope-wrapper { position: relative; width: 100%; max-width: 680px; perspective: 1200px; }
+    .envelope {
+      width: 100%; height: 360px; background: linear-gradient(145deg, #181d3d, #0f1329);
+      border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.2); overflow: hidden; transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .envelope.unsealed { height: auto; overflow: visible; background: transparent; box-shadow: none; border: none; }
+    .envelope-flap {
+      position: absolute; top: 0; left: 0; width: 100%; height: 180px; background: linear-gradient(180deg, #222954, #181e40);
+      clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 10; border-top: 1px solid rgba(255, 255, 255, 0.18);
+      transform-origin: top center; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    }
+    .envelope.unsealed .envelope-flap { transform: rotateX(180deg); opacity: 0; pointer-events: none; }
+    .wax-seal {
+      position: absolute; top: 140px; left: 50%; transform: translate(-50%, -50%); width: 86px; height: 86px;
+      border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffd700, #d97706 70%, #92400e 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.6); border: 3px solid rgba(254, 243, 199, 0.6);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; z-index: 20; transition: transform 0.3s ease;
+    }
+    .wax-seal:hover { transform: translate(-50%, -50%) scale(1.1); }
+    .seal-text-top { font-size: 0.58rem; font-weight: 800; color: #78350f; font-family: var(--font-mono); }
+    .seal-icon { font-size: 1.4rem; color: #78350f; margin: 1px 0; }
+    .seal-text-bottom { font-size: 0.6rem; font-weight: 800; color: #78350f; font-family: var(--font-mono); }
+    .envelope.unsealed .wax-seal { animation: sealBreak 0.5s forwards ease-in; }
+    @keyframes sealBreak {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(0) rotate(45deg); opacity: 0; pointer-events: none; }
+    }
+
+    .letter-sheet {
+      display: none; background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(248, 250, 252, 0.95));
+      color: #1e293b; border-radius: 12px; padding: 48px 42px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      position: relative; animation: letterUnfold 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes letterUnfold { 0% { opacity: 0; transform: translateY(60px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+    .letter-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid rgba(0, 0, 0, 0.08); padding-bottom: 18px; margin-bottom: 28px; }
+    .letter-salutation { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #0f172a; }
+    .letter-date { font-family: var(--font-mono); font-size: 0.85rem; color: #64748b; }
+    .letter-body { font-size: 1.12rem; line-height: 1.85; color: #334155; margin-bottom: 32px; }
+    .letter-body p { margin-bottom: 20px; }
+    .letter-footer { display: flex; flex-direction: column; align-items: flex-end; border-top: 1px solid rgba(0, 0, 0, 0.08); padding-top: 20px; }
+    .letter-closing { font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: #475569; margin-bottom: 6px; }
+    .letter-signature { font-family: var(--font-hand); font-size: 2.2rem; color: var(--color-rose); transform: rotate(-3deg); display: inline-block; }
+    .letter-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; }
+    .letter-btn {
+      background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); color: var(--text-main);
+      padding: 8px 18px; border-radius: var(--radius-full); font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    /* Fireworks */
+    .fireworks-container {
+      width: 100%; height: 480px; background: radial-gradient(circle at 50% 100%, #151a3c 0%, #060812 70%);
+      border: 1px solid var(--border-glass); border-radius: var(--radius-lg); position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), var(--glow-purple);
+    }
+    #fireworks-interactive-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; cursor: crosshair; }
+    .fireworks-overlay-ui {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 24px;
+    }
+    .fireworks-sky-hint {
+      text-align: center; font-size: 0.88rem; color: var(--color-cyan-light); background: rgba(14, 18, 36, 0.65);
+      border: 1px solid rgba(6, 182, 212, 0.3); padding: 6px 18px; border-radius: var(--radius-full); align-self: center; backdrop-filter: blur(8px);
+    }
+    .wish-lantern-bar {
+      pointer-events: auto; background: rgba(14, 18, 36, 0.85); border: 1px solid var(--border-glass);
+      border-radius: var(--radius-full); padding: 6px 6px 6px 20px; display: flex; align-items: center; gap: 12px;
+      max-width: 580px; width: 100%; margin: 0 auto; backdrop-filter: blur(16px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .wish-lantern-input { background: transparent; border: none; color: var(--text-main); font-size: 0.95rem; flex: 1; outline: none; font-family: var(--font-sans); }
+    .wish-lantern-btn {
+      background: linear-gradient(135deg, var(--color-gold), var(--color-rose)); color: white; border: none;
+      padding: 10px 22px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 700; cursor: pointer;
+    }
+    .sky-lantern {
+      position: absolute; width: 44px; height: 58px;
+      background: radial-gradient(circle at 50% 65%, #fff 0%, #fef08a 40%, #f59e0b 80%, #b45309 100%);
+      border-radius: 8px 8px 12px 12px; box-shadow: 0 0 25px #f59e0b, 0 0 45px rgba(245, 158, 11, 0.6);
+      pointer-events: auto; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 5;
+    }
+
+    /* Drawer */
+    .drawer-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(4, 6, 15, 0.7);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 9997; opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer-panel {
+      position: fixed; top: 0; right: 0; width: 100%; max-width: 460px; height: 100vh; background: #0d122b;
+      border-left: 1px solid var(--border-glass); z-index: 9998; padding: 36px 28px; display: flex; flex-direction: column;
+      overflow-y: auto; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .drawer-overlay.open .drawer-panel { transform: translateX(0); }
+    .drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .drawer-title { font-size: 1.4rem; font-weight: 800; color: #ffffff; }
+    .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+    .form-input, .form-textarea {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); border-radius: var(--radius-sm);
+      padding: 10px 14px; color: var(--text-main); font-size: 0.92rem; outline: none;
+    }
+    .form-textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+    .drawer-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+
+    /* Footer & Toast */
+    .site-footer { border-top: 1px solid var(--border-glass); padding: 48px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+    .footer-badge {
+      display: inline-flex; align-items: center; gap: 8px; color: var(--color-purple-light);
+      background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); padding: 4px 14px; border-radius: var(--radius-full); font-size: 0.76rem; font-family: var(--font-mono); margin-bottom: 16px;
+    }
+    .footer-back-top {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); color: var(--text-secondary);
+      padding: 8px 20px; border-radius: var(--radius-full); cursor: pointer; font-size: 0.84rem; margin-top: 20px;
+    }
+    .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 10001; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+    .toast {
+      background: rgba(18, 24, 46, 0.95); border: 1px solid var(--color-purple); color: #ffffff;
+      padding: 12px 20px; border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--glow-purple); backdrop-filter: blur(16px);
+      animation: toastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1), toastOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+    }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(20px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes toastOut { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(-10px) scale(0.95); } }
+
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      #stars-canvas, #confetti-canvas, .navbar, .cake-controls, .scratch-canvas, .fireworks-container, .drawer-overlay, #cosmic-portal, .cursor-dot, .cursor-aura { display: none !important; }
+      .letter-sheet { display: block !important; box-shadow: none !important; border: 1px solid #ccc !important; }
+      .polaroid-card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Canvases -->
+  <canvas id="stars-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-aura" id="cursor-aura"></div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="#hero" class="nav-brand">
+      <div class="brand-icon">✨</div>
+      <span>BESTIE // <span id="nav-milestone">2026</span></span>
+      <span class="brand-edition">Certified Soulmate</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#hero" class="nav-link active">Celebration</a></li>
+      <li><a href="#cake-section" class="nav-link">Make a Wish</a></li>
+      <li><a href="#memories-section" class="nav-link">Memories</a></li>
+      <li><a href="#superpowers-section" class="nav-link">Superpowers</a></li>
+      <li><a href="#letter-section" class="nav-link">The Letter</a></li>
+      <li><a href="#fireworks-section" class="nav-link">Fireworks Sky</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="action-icon-btn" id="music-toggle-btn" title="Toggle Ambient Lullaby Music Box">
+        <div class="music-waves">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+      </button>
+
+      <button class="action-icon-btn active" id="sfx-toggle-btn" title="Toggle Sound FX">🔊</button>
+      <button class="nav-customize-btn" id="open-customize-btn">
+        <span>⚙️</span>
+        <span>Personalize</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Act 0: Portal Gatekeeper -->
+  <div id="cosmic-portal">
+    <div class="portal-badge">⚡ INCOMING COSMIC TRANSMISSION // CALIBRATED</div>
+    <h1 class="portal-title">A Special Transmission for <span class="recipient-name">Alex</span></h1>
+    <p class="portal-subtitle">
+      A journey through time, laughter, and unbreakable bonds is prepared for <strong>Earth's Greatest Best Friend</strong>.
+    </p>
+
+    <div class="scanner-wrapper" id="portal-scanner">
+      <svg class="scanner-svg" viewBox="0 0 140 140">
+        <defs>
+          <linearGradient id="portalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6" />
+            <stop offset="50%" stop-color="#f43f5e" />
+            <stop offset="100%" stop-color="#06b6d4" />
+          </linearGradient>
+        </defs>
+        <circle class="scanner-track" cx="70" cy="70" r="65"></circle>
+        <circle class="scanner-bar" id="scanner-progress-ring" cx="70" cy="70" r="65"></circle>
+      </svg>
+      <div class="scanner-core">
+        <div class="scanner-icon">✨</div>
+        <div class="scanner-label">HOLD</div>
+      </div>
+    </div>
+
+    <div class="portal-instruction">Press & hold the core to unlock your 2026 chapter</div>
+    <button class="portal-bypass-btn" id="portal-skip-btn">Skip Calibration & Enter Directly →</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <!-- Act 1: Hero Celebration -->
+    <section class="section hero-container" id="hero">
+      <div class="hero-announcement">
+        <span class="hero-badge-tag">CHAPTER 2026</span>
+        <span>Today the world celebrates its absolute favorite human</span>
+      </div>
+
+      <h1 class="hero-title">
+        Happy Birthday,<br>
+        <span class="recipient-name gradient-text" id="hero-recipient-name">Alex</span>! 🎂
+      </h1>
+
+      <p class="hero-tagline" id="hero-tagline">
+        Another 365 days of unstoppable laughter, legendary memories, 
+        and being the most irreplaceable soul in the universe.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" id="hero-confetti-btn"><span>🎉 Launch Confetti Storm</span></button>
+        <button class="btn-secondary" id="hero-hug-btn"><span>💖 Send Cosmic Hug</span></button>
+        <a href="#cake-section" class="btn-secondary"><span>🎂 Make a Wish →</span></a>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-icon">🌟</div>
+          <div class="bento-value gradient-gold">9,130+</div>
+          <div class="bento-label">Days of Radiance</div>
+          <div class="bento-subtext">Lighting up every room, every conversation, and every single soul around you.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">⚡</div>
+          <div class="bento-value gradient-cyan">99.99%</div>
+          <div class="bento-label">Vibe Synergy</div>
+          <div class="bento-subtext">Capable of holding entire conversations with just a 1-second glance across a room.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">☕</div>
+          <div class="bento-value gradient-text">580+</div>
+          <div class="bento-label">Hours of 2 AM Talks</div>
+          <div class="bento-subtext">Solving all the world’s problems over late night snacks, tea, and uncontrollable laughs.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">🏆</div>
+          <div class="bento-value" style="color:#10b981;">Permanent</div>
+          <div class="bento-label">Best Friend Status</div>
+          <div class="bento-subtext">Unshakable life contract signed in laughter. You’re completely stuck with me forever!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 2: Cake & Candle Ceremony -->
+    <section class="section cake-experience" id="cake-section">
+      <div class="section-header">
+        <div class="section-pill">✨ CANDLE CEREMONY</div>
+        <h2 class="section-title">The 2026 Milestone Cake</h2>
+        <p class="section-desc">
+          Close your eyes, think of your biggest, most audacious dream for this upcoming year, and blow out the candles!
+        </p>
+      </div>
+
+      <div class="cake-stage" id="cake-stage">
+        <div class="candles-row" id="candles-container">
+          <div class="candle"><div class="candle-flame"></div><div class="smoke-puff"></div></div>
+          <div class="candle"><div class="candle-flame"></div><div class="smoke-puff"></div></div>
+          <div class="candle"><div class="candle-flame"></div><div class="smoke-puff"></div></div>
+        </div>
+        <div class="cake-tier-3"><div class="cake-drip-cyan"></div></div>
+        <div class="cake-tier-2"><div class="cake-drip-rose"></div></div>
+        <div class="cake-tier-1"><div class="cake-drip-gold"></div></div>
+        <div class="cake-pedestal"></div>
+      </div>
+
+      <div class="cake-controls">
+        <button class="blow-btn" id="blow-candles-btn"><span>💨 Blow Out Candles</span></button>
+        <div class="blow-alt-options">
+          <span>Or press <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;">Spacebar</kbd></span>
+          <span>•</span>
+          <button class="mic-btn" id="mic-blow-toggle"><span>🎙️ Blow with Microphone</span></button>
+        </div>
+        <button class="relight-btn" id="relight-candles-btn"><span>🔥 Relight Candles</span></button>
+      </div>
+
+      <div class="wish-granted-card" id="wish-granted-card">
+        <div class="wish-title"><span>✨</span><span>WISH SEALED INTO THE STARS!</span><span>✨</span></div>
+        <p class="wish-affirmation-text" id="wish-affirmation-text">
+          "2026 is officially the year every wild dream you've whispered at 2 AM turns into reality. 
+          And I'll be right beside you cheering the loudest."
+        </p>
+        <button class="fortune-refresh-btn" id="fortune-refresh-btn">🎲 Draw Another Cosmic Fortune</button>
+      </div>
+    </section>
+
+    <!-- Act 3: Memory Vault -->
+    <section class="section memories-container" id="memories-section">
+      <div class="section-header">
+        <div class="section-pill">📸 CORE MEMORIES ARCHIVE</div>
+        <h2 class="section-title">The Bestie Vault</h2>
+        <p class="section-desc">
+          A timeless collection of proof that we are undeniably the greatest, most chaotic duo in human history.
+        </p>
+      </div>
+
+      <div class="memories-grid" id="memories-grid">
+        <div class="polaroid-card" data-memory-id="1">
+          <div class="washi-tape"></div>
+          <div class="polaroid-photo">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="skyGrad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#311042"/>
+                  <stop offset="45%" stop-color="#831843"/>
+                  <stop offset="75%" stop-color="#f43f5e"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="240" fill="url(#skyGrad1)"/>
+              <circle cx="230" cy="50" r="16" fill="#fef08a" opacity="0.9"/>
+              <circle cx="236" cy="46" r="14" fill="#311042"/>
+              <polygon points="0,170 80,110 160,180 230,95 300,165 300,240 0,240" fill="#1e1b4b" opacity="0.85"/>
+              <polygon points="0,185 110,135 190,195 300,140 300,240 0,240" fill="#0f172a"/>
+              <path d="M120,240 L145,175 L155,175 L180,240 Z" fill="#334155"/>
+              <path d="M150,240 L150,180" stroke="#fef08a" stroke-width="2" stroke-dasharray="6,6"/>
+            </svg>
+          </div>
+          <div class="polaroid-caption">The Infinite Roadtrip</div>
+          <div class="polaroid-date">July • Lost with no GPS</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="2">
+          <div class="washi-tape"></div>
+          <div class="polaroid-photo">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#020617"/>
+                  <stop offset="100%" stop-color="#0f172a"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="240" fill="url(#skyGrad2)"/>
+              <rect x="20" y="80" width="40" height="160" fill="#1e293b"/>
+              <rect x="75" y="50" width="55" height="190" fill="#1e293b"/>
+              <rect x="145" y="90" width="45" height="150" fill="#1e293b"/>
+              <rect x="205" y="40" width="60" height="200" fill="#1e293b"/>
+              <circle cx="95" cy="75" r="3" fill="#fef08a"/>
+              <circle cx="110" cy="115" r="3" fill="#67e8f9"/>
+              <circle cx="225" cy="70" r="3" fill="#fef08a"/>
+              <circle cx="245" cy="130" r="3" fill="#f43f5e"/>
+              <rect x="125" y="195" width="22" height="24" rx="4" fill="#8b5cf6"/>
+              <rect x="155" y="195" width="22" height="24" rx="4" fill="#06b6d4"/>
+              <path d="M136,190 Q130,175 136,165" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+              <path d="M166,190 Q172,175 166,165" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="polaroid-caption">2 AM Epiphanies</div>
+          <div class="polaroid-date">Midnight • Over cold tea & pizza</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="3">
+          <div class="washi-tape"></div>
+          <div class="polaroid-photo">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="240" fill="#030712"/>
+              <polygon points="150,0 20,240 70,240" fill="#ec4899" opacity="0.45"/>
+              <polygon points="150,0 120,240 180,240" fill="#8b5cf6" opacity="0.5"/>
+              <polygon points="150,0 230,240 280,240" fill="#06b6d4" opacity="0.45"/>
+              <circle cx="150" cy="20" r="18" fill="#ffffff" filter="drop-shadow(0 0 15px #fff)"/>
+              <path d="M30,240 L35,200 L42,190 L48,205 L52,240 Z" fill="#090d16"/>
+              <path d="M90,240 L98,185 L106,180 L115,200 L120,240 Z" fill="#090d16"/>
+              <path d="M160,240 L168,175 L178,170 L188,190 L195,240 Z" fill="#090d16"/>
+              <path d="M230,240 L238,190 L248,182 L258,205 L265,240 Z" fill="#090d16"/>
+              <circle cx="60" cy="110" r="2.5" fill="#fef08a"/>
+              <circle cx="180" cy="90" r="3" fill="#f43f5e"/>
+              <circle cx="240" cy="120" r="2.5" fill="#67e8f9"/>
+            </svg>
+          </div>
+          <div class="polaroid-caption">Concert Euphoria</div>
+          <div class="polaroid-date">Autumn • Screaming every lyric</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="4">
+          <div class="washi-tape"></div>
+          <div class="polaroid-photo">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="neonGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1e1b4b"/>
+                  <stop offset="100%" stop-color="#4c0519"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="240" fill="url(#neonGrad)"/>
+              <rect x="50" y="40" width="200" height="70" rx="10" fill="none" stroke="#f43f5e" stroke-width="3"/>
+              <text x="150" y="85" fill="#fef08a" font-family="sans-serif" font-size="22" font-weight="900" text-anchor="middle">24/7 LAUGHS</text>
+              <circle cx="100" cy="170" r="28" fill="#f59e0b"/>
+              <path d="M88,165 Q100,185 112,165" stroke="#78350f" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="92" cy="158" r="3" fill="#78350f"/>
+              <circle cx="108" cy="158" r="3" fill="#78350f"/>
+              <circle cx="200" cy="170" r="28" fill="#f59e0b"/>
+              <path d="M188,165 Q200,185 212,165" stroke="#78350f" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="192" cy="158" r="3" fill="#78350f"/>
+              <circle cx="208" cy="158" r="3" fill="#78350f"/>
+            </svg>
+          </div>
+          <div class="polaroid-caption">Laughter Until Crying</div>
+          <div class="polaroid-date">Spring • That one inside joke</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="5">
+          <div class="washi-tape"></div>
+          <div class="polaroid-photo">
+            <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="stormGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0f172a"/>
+                  <stop offset="60%" stop-color="#1e293b"/>
+                  <stop offset="100%" stop-color="#064e3b"/>
+                </linearGradient>
+              </defs>
+              <rect width="300" height="240" fill="url(#stormGrad)"/>
+              <polygon points="150,30 30,240 270,240" fill="#fef08a" opacity="0.25"/>
+              <polygon points="150,30 80,240 220,240" fill="#ffffff" opacity="0.35"/>
+              <circle cx="150" cy="65" r="26" fill="#fef08a"/>
+              <polygon points="135,170 140,158 145,170 157,175 145,180 140,192 135,180 123,175" fill="#ffffff"/>
+              <polygon points="165,170 170,158 175,170 187,175 175,180 170,192 165,180 153,175" fill="#38bdf8"/>
+            </svg>
+          </div>
+          <div class="polaroid-caption">Through Every Storm</div>
+          <div class="polaroid-date">Always • Unbreakable partnership</div>
+        </div>
+
+        <div class="add-memory-card" id="add-memory-btn">
+          <div class="add-icon-circle">+</div>
+          <div style="font-weight:700;font-size:1.1rem;margin-bottom:6px;">Add Your Memory</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);max-width:200px;">
+            Pin another legendary moment into this celebration vault!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory Details Modal -->
+    <div class="modal-overlay" id="memory-modal">
+      <div class="modal-box">
+        <button class="modal-close-btn" id="modal-close-btn">✕</button>
+        <div class="modal-photo-preview" id="modal-photo-slot"></div>
+        <div class="modal-memory-tag" id="modal-tag-slot">CORE MEMORY</div>
+        <h3 class="modal-memory-title" id="modal-title-slot">Memory Title</h3>
+        <div class="modal-memory-date" id="modal-date-slot">Date & Location</div>
+        <p class="modal-memory-story" id="modal-story-slot">The full heartwarming memory text goes here.</p>
+        <div class="modal-soundtrack-pill">
+          <span>🎵 Memory Soundtrack:</span>
+          <strong id="modal-soundtrack-slot">Midnight City — M83</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Act 4: Superpowers & Scratch Cards -->
+    <section class="section" id="superpowers-section">
+      <div class="section-header">
+        <div class="section-pill">⚡ CERTIFIED SUPERPOWERS</div>
+        <h2 class="section-title">Why You're Irreplaceable</h2>
+        <p class="section-desc">
+          Scratch off the holographic protective foils below to unveil the superpowers that make you one in 8 billion.
+        </p>
+      </div>
+
+      <div class="scratch-grid">
+        <div class="scratch-card-wrapper">
+          <div class="scratch-secret">
+            <div class="secret-badge">SUPERPOWER #1</div>
+            <div class="secret-title">Mind-Reader Telepathy</div>
+            <div class="secret-desc">
+              You know exactly what I'm thinking with just a single eyebrow raise across a crowded room. No words needed.
+            </div>
+          </div>
+          <canvas class="scratch-canvas" id="scratch-canvas-1"></canvas>
+          <div class="scratch-hint">Scratch to reveal ✨</div>
+        </div>
+
+        <div class="scratch-card-wrapper">
+          <div class="scratch-secret">
+            <div class="secret-badge">SUPERPOWER #2</div>
+            <div class="secret-title">The Iron Shield</div>
+            <div class="secret-desc">
+              Zero judgment, absolute loyalty. You show up unconditionally and stand in my corner when everything else falls apart.
+            </div>
+          </div>
+          <canvas class="scratch-canvas" id="scratch-canvas-2"></canvas>
+          <div class="scratch-hint">Scratch to reveal ✨</div>
+        </div>
+
+        <div class="scratch-card-wrapper">
+          <div class="scratch-secret">
+            <div class="secret-badge">SUPERPOWER #3</div>
+            <div class="secret-title">Instant Sunshine</div>
+            <div class="secret-desc">
+              Your chaotic, radiant humor can cure any terrible day in approximately 4.2 seconds flat. Pure magic.
+            </div>
+          </div>
+          <canvas class="scratch-canvas" id="scratch-canvas-3"></canvas>
+          <div class="scratch-hint">Scratch to reveal ✨</div>
+        </div>
+      </div>
+
+      <div class="accolade-box">
+        <div style="font-size:0.8rem;color:var(--color-purple-light);text-transform:uppercase;letter-spacing:1px;font-family:var(--font-mono);margin-bottom:12px;">
+          BESTIE TRUTH GENERATOR
+        </div>
+        <div class="accolade-quote" id="accolade-text">
+          "Finding a friend who matches your exact frequency of ambition, silliness, and loyalty is rarer than a supernova. You are that miracle."
+        </div>
+        <button class="accolade-btn" id="generate-accolade-btn">
+          <span>🎲 Generate Another Accolade</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Act 5: Wax Sealed Letter -->
+    <section class="section envelope-section" id="letter-section">
+      <div class="section-header">
+        <div class="section-pill">💌 FROM THE HEART</div>
+        <h2 class="section-title">A Message From the Soul</h2>
+        <p class="section-desc">
+          Click the golden wax seal to break the lock and unseal this personal dispatch.
+        </p>
+      </div>
+
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope-box">
+          <div class="envelope-flap"></div>
+          <div class="wax-seal" id="wax-seal-btn" title="Click to break the wax seal!">
+            <div class="seal-text-top">BESTIE</div>
+            <div class="seal-icon">★</div>
+            <div class="seal-text-bottom">2026</div>
+          </div>
+
+          <article class="letter-sheet" id="letter-sheet">
+            <div class="letter-header">
+              <div class="letter-salutation">
+                Dear <span class="recipient-name" id="letter-salutation-name">Alex</span>,
+              </div>
+              <div class="letter-date" id="letter-date-display">2026 Edition</div>
+            </div>
+
+            <div class="letter-body" id="letter-body-content">
+              <p>
+                They say people enter our lives for a reason, but stumbling into someone who shares your exact degree of madness, loyalty, and passion? That is once-in-a-lifetime cosmic luck.
+              </p>
+              <p>
+                Looking back at everything we’ve navigated together—the triumphs that felt like magic, the moments when life tested us, and the ordinary days made extraordinary just because you were there—I am endlessly proud to stand by your side.
+              </p>
+              <p>
+                As you step into 2026, I hope you see yourself through the eyes of those who love you: brilliant, fiercely kind, relentlessly resilient, and capable of moving mountains. Never doubt the immense light you bring to this world.
+              </p>
+              <p>
+                Here is to another 365 days of belly laughs, conquering big dreams, and creating memories we’ll still be laughing about when we’re ninety years old.
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <div class="letter-closing">Forever in your corner,</div>
+              <div class="letter-signature" id="letter-signature-text">Your Best Friend</div>
+            </div>
+
+            <div class="letter-actions">
+              <button class="letter-btn" id="edit-letter-trigger-btn"><span>✍️ Personalize Letter</span></button>
+              <button class="letter-btn" id="print-keepsake-btn"><span>🖨️ Print / Save Keepsake</span></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Act 6: Fireworks & Wish Lanterns -->
+    <section class="section" id="fireworks-section">
+      <div class="section-header">
+        <div class="section-pill">🎆 THE INFINITE FINALE</div>
+        <h2 class="section-title">Cosmic Fireworks & Wishes</h2>
+        <p class="section-desc">
+          Tap or click anywhere across this midnight canvas to launch radiant celebratory fireworks, or launch a glowing wish lantern!
+        </p>
+      </div>
+
+      <div class="fireworks-container" id="fireworks-sky-box">
+        <canvas id="fireworks-interactive-canvas"></canvas>
+        <div class="fireworks-overlay-ui">
+          <div class="fireworks-sky-hint">✨ Click or tap anywhere in the sky to launch fireworks! ✨</div>
+          <div class="wish-lantern-bar">
+            <input type="text" class="wish-lantern-input" id="wish-lantern-input" placeholder="Type your biggest wish or dream for 2026..." maxlength="120" />
+            <button class="wish-lantern-btn" id="launch-lantern-btn"><span>Release Lantern 🏮</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Personalize Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Personalize Greeting</h3>
+        <button class="modal-close-btn" id="close-drawer-btn" style="position:static;">✕</button>
+      </div>
+
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:24px;line-height:1.5;">
+        Customize every detail for your best friend. Changes save automatically and can be shared via a custom link!
+      </p>
+
+      <form id="customize-form">
+        <div class="form-group">
+          <label class="form-label" for="input-recipient-name">Best Friend's Name</label>
+          <input type="text" id="input-recipient-name" class="form-input" value="Alex" placeholder="e.g. Alex" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-nickname">Recipient Nickname / Tag</label>
+          <input type="text" id="input-nickname" class="form-input" value="Partner-in-Crime" placeholder="e.g. Chief Chaos Officer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-sender-name">Your Name (The Sender)</label>
+          <input type="text" id="input-sender-name" class="form-input" value="Your Best Friend" placeholder="e.g. Sam" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-milestone">Milestone / Year</label>
+          <input type="text" id="input-milestone" class="form-input" value="2026" placeholder="e.g. 2026 or 25th Milestone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-letter-body">Heartfelt Letter Text</label>
+          <textarea id="input-letter-body" class="form-textarea" placeholder="Write your personalized letter here..."></textarea>
+        </div>
+
+        <div class="drawer-actions">
+          <button type="submit" class="btn-primary" style="justify-content:center;"><span>💾 Save & Apply</span></button>
+          <button type="button" class="btn-secondary" id="copy-share-link-btn" style="justify-content:center;"><span>🔗 Copy Shareable Link</span></button>
+          <button type="button" class="portal-bypass-btn" id="reset-defaults-btn">Reset to Default Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom Memory Add Modal -->
+  <div class="modal-overlay" id="add-memory-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="close-add-modal-btn">✕</button>
+      <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:18px;">Add a Custom Memory</h3>
+      <form id="add-memory-form">
+        <div class="form-group">
+          <label class="form-label">Memory Title</label>
+          <input type="text" class="form-input" id="new-memory-title" placeholder="e.g. Midnight Taco Run" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date or Tag</label>
+          <input type="text" class="form-input" id="new-memory-date" placeholder="e.g. Summer 2025 • Spontaneous" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">The Story / Anecdote</label>
+          <textarea class="form-textarea" id="new-memory-story" placeholder="What made this moment unforgettable?" required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Soundtrack Song (Optional)</label>
+          <input type="text" class="form-input" id="new-memory-song" placeholder="e.g. Electric Feel — MGMT" />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:14px;">
+          <span>Pin to Vault ✨</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-badge">COSMIC BESTIE INITIATIVE • 2026 EDITION</div>
+    <p>Engineered with infinite love, stardust, and laughter for someone who makes the whole universe brighter.</p>
+    <p style="font-size:0.8rem;margin-top:6px;color:var(--text-muted);">Happy Birthday to the most irreplaceable partner-in-crime.</p>
+    <div>
+      <button class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">↑ Back to Top of the Stars</button>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       JAVASCRIPT LOGIC
+       ======================================================== -->
+  <script>
+    /* 1. Audio Synthesis Engine */
+    const Sound = {
+      ctx: null, enabled: true, musicMuted: true, isPlayingMusic: false, musicTimer: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      },
+      playChime(freq = 880, type = 'sine') {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, now);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.3);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+          osc.connect(gain); gain.connect(this.ctx.destination);
+          osc.start(now); osc.stop(now + 0.45);
+        } catch (e) {}
+      },
+      playFanfare() {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          const now = this.ctx.currentTime;
+          notes.forEach((f, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(f, now + idx * 0.08);
+            gain.gain.setValueAtTime(0, now + idx * 0.08);
+            gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.08 + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.8);
+            osc.connect(gain); gain.connect(this.ctx.destination);
+            osc.start(now + idx * 0.08); osc.stop(now + idx * 0.08 + 0.85);
+          });
+        } catch (e) {}
+      },
+      playPop() {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine'; osc.frequency.setValueAtTime(800, now);
+          osc.frequency.exponentialRampToValueAtTime(200, now + 0.08);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain); gain.connect(this.ctx.destination);
+          osc.start(now); osc.stop(now + 0.09);
+        } catch (e) {}
+      },
+      playBlow() {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const bufferSize = Math.floor(this.ctx.sampleRate * 0.6);
+          const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'bandpass'; filter.frequency.setValueAtTime(400, this.ctx.currentTime);
+          filter.frequency.linearRampToValueAtTime(800, this.ctx.currentTime + 0.3);
+          filter.frequency.linearRampToValueAtTime(200, this.ctx.currentTime + 0.6);
+          filter.Q.value = 3.0;
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.001, this.ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.25, this.ctx.currentTime + 0.15);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.6);
+          noise.connect(filter); filter.connect(gain); gain.connect(this.ctx.destination);
+          noise.start();
+        } catch (e) {}
+      },
+      playWaxSnap() {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth'; osc.frequency.setValueAtTime(280, now);
+          osc.frequency.exponentialRampToValueAtTime(45, now + 0.14);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+          osc.connect(gain); gain.connect(this.ctx.destination);
+          osc.start(now); osc.stop(now + 0.15);
+        } catch (e) {}
+      },
+      playFirework() {
+        if (!this.enabled) return; this.init(); if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const oscGain = this.ctx.createGain();
+          osc.type = 'sine'; osc.frequency.setValueAtTime(250, now);
+          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.22);
+          oscGain.gain.setValueAtTime(0.08, now);
+          oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+          osc.connect(oscGain); oscGain.connect(this.ctx.destination);
+          osc.start(now); osc.stop(now + 0.23);
+
+          setTimeout(() => {
+            if (!this.ctx) return;
+            const t = this.ctx.currentTime;
+            const bufferSize = Math.floor(this.ctx.sampleRate * 0.3);
+            const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+            const d = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) d[i] = Math.random() * 2 - 1;
+            const n = this.ctx.createBufferSource();
+            n.buffer = buffer;
+            const f = this.ctx.createBiquadFilter();
+            f.type = 'lowpass'; f.frequency.setValueAtTime(1100, t);
+            f.frequency.exponentialRampToValueAtTime(70, t + 0.3);
+            const g = this.ctx.createGain();
+            g.gain.setValueAtTime(0.2, t);
+            g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+            n.connect(f); f.connect(g); g.connect(this.ctx.destination);
+            n.start(t);
+          }, 220);
+        } catch (e) {}
+      },
+      startMusicBox() {
+        this.musicMuted = false;
+        if (this.isPlayingMusic) return;
+        this.isPlayingMusic = true;
+        this.init();
+
+        const notes = [
+          [392.00, 0.4, 0.45], [392.00, 0.3, 0.35], [440.00, 0.6, 0.70], [392.00, 0.6, 0.70],
+          [523.25, 0.6, 0.70], [493.88, 1.0, 1.10], [392.00, 0.4, 0.45], [392.00, 0.3, 0.35],
+          [440.00, 0.6, 0.70], [392.00, 0.6, 0.70], [587.33, 0.6, 0.70], [523.25, 1.0, 1.10],
+          [392.00, 0.4, 0.45], [392.00, 0.3, 0.35], [783.99, 0.6, 0.70], [659.25, 0.6, 0.70],
+          [523.25, 0.6, 0.70], [493.88, 0.6, 0.70], [440.00, 1.0, 1.10], [698.46, 0.4, 0.45],
+          [698.46, 0.3, 0.35], [659.25, 0.6, 0.70], [523.25, 0.6, 0.70], [587.33, 0.6, 0.70],
+          [523.25, 1.4, 2.00]
+        ];
+
+        let noteIdx = 0;
+        const playNext = () => {
+          if (!this.isPlayingMusic) return;
+          if (!this.musicMuted && this.enabled) {
+            const [freq, duration, delay] = notes[noteIdx];
+            this.playMusicBoxNote(freq, duration);
+            noteIdx = (noteIdx + 1) % notes.length;
+            this.musicTimer = setTimeout(playNext, delay * 820);
+          } else {
+            this.musicTimer = setTimeout(playNext, 600);
+          }
+        };
+        playNext();
+      },
+      playMusicBoxNote(freq, duration) {
+        if (!this.ctx || this.musicMuted || !this.enabled) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc1 = this.ctx.createOscillator();
+          const gain1 = this.ctx.createGain();
+          osc1.type = 'sine'; osc1.frequency.setValueAtTime(freq, now);
+          const osc2 = this.ctx.createOscillator();
+          const gain2 = this.ctx.createGain();
+          osc2.type = 'triangle'; osc2.frequency.setValueAtTime(freq * 2, now);
+
+          gain1.gain.setValueAtTime(0.08, now);
+          gain1.gain.exponentialRampToValueAtTime(0.0001, now + duration * 1.5);
+          gain2.gain.setValueAtTime(0.03, now);
+          gain2.gain.exponentialRampToValueAtTime(0.0001, now + duration * 0.8);
+
+          osc1.connect(gain1); gain1.connect(this.ctx.destination);
+          osc2.connect(gain2); gain2.connect(this.ctx.destination);
+          osc1.start(now); osc2.start(now);
+          osc1.stop(now + duration * 1.6); osc2.stop(now + duration * 0.9);
+        } catch (e) {}
+      },
+      toggleMusic() {
+        this.init();
+        if (this.musicMuted || !this.isPlayingMusic) {
+          this.startMusicBox(); return true;
+        } else {
+          this.musicMuted = true; return false;
+        }
+      }
+    };
+
+    /* 2. Starfield & Nebula Canvas */
+    const StarsCanvas = {
+      canvas: document.getElementById('stars-canvas'), ctx: null, stars: [], nebulaPhase: 0,
+      mouseX: 0, mouseY: 0, targetMouseX: 0, targetMouseY: 0,
+      init() {
+        this.ctx = this.canvas.getContext('2d');
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        window.addEventListener('mousemove', (e) => {
+          this.targetMouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+          this.targetMouseY = (e.clientY - window.innerHeight / 2) * 0.05;
+        });
+        this.stars = [];
+        for (let i = 0; i < 180; i++) {
+          this.stars.push({
+            x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight,
+            size: Math.random() * 2 + 0.5, baseAlpha: Math.random() * 0.7 + 0.3,
+            twinkleSpeed: Math.random() * 0.03 + 0.01, twinklePhase: Math.random() * Math.PI * 2,
+            z: Math.random() * 0.8 + 0.2,
+            color: ['#ffffff', '#c4b5fd', '#67e8f9', '#fef08a'][Math.floor(Math.random() * 4)]
+          });
+        }
+        this.animate();
+      },
+      resize() { this.canvas.width = window.innerWidth; this.canvas.height = window.innerHeight; },
+      animate() {
+        this.mouseX += (this.targetMouseX - this.mouseX) * 0.05;
+        this.mouseY += (this.targetMouseY - this.mouseY) * 0.05;
+        this.nebulaPhase += 0.005;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const grad1 = this.ctx.createRadialGradient(
+          this.canvas.width * 0.3 + Math.sin(this.nebulaPhase) * 60,
+          this.canvas.height * 0.25 + Math.cos(this.nebulaPhase * 0.8) * 40,
+          20, this.canvas.width * 0.3, this.canvas.height * 0.25, this.canvas.width * 0.6
+        );
+        grad1.addColorStop(0, 'rgba(139, 92, 246, 0.08)');
+        grad1.addColorStop(1, 'rgba(139, 92, 246, 0)');
+        this.ctx.fillStyle = grad1;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        for (let star of this.stars) {
+          star.twinklePhase += star.twinkleSpeed;
+          const alpha = star.baseAlpha + Math.sin(star.twinklePhase) * 0.3;
+          const px = (star.x + this.mouseX * star.z + this.canvas.width) % this.canvas.width;
+          const py = (star.y + this.mouseY * star.z + this.canvas.height) % this.canvas.height;
+          this.ctx.fillStyle = star.color;
+          this.ctx.globalAlpha = Math.max(0.1, Math.min(1, alpha));
+          this.ctx.beginPath(); this.ctx.arc(px, py, star.size, 0, Math.PI * 2); this.ctx.fill();
+        }
+        this.ctx.globalAlpha = 1.0;
+        requestAnimationFrame(() => this.animate());
+      }
+    };
+
+    /* 3. Confetti Engine */
+    const Confetti = {
+      canvas: document.getElementById('confetti-canvas'), ctx: null, particles: [], isRunning: false,
+      init() { this.ctx = this.canvas.getContext('2d'); this.resize(); window.addEventListener('resize', () => this.resize()); },
+      resize() { this.canvas.width = window.innerWidth; this.canvas.height = window.innerHeight; },
+      fireCannons() {
+        Sound.playPop();
+        const colors = ['#f43f5e', '#8b5cf6', '#06b6d4', '#f59e0b', '#10b981', '#ffffff', '#ec4899'];
+        for (let i = 0; i < 70; i++) {
+          const angle = -Math.PI / 4 + (Math.random() - 0.5) * 0.6;
+          const speed = Math.random() * 18 + 12;
+          this.particles.push({
+            x: 0, y: window.innerHeight * 0.85, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+            size: Math.random() * 8 + 6, color: colors[Math.floor(Math.random() * colors.length)],
+            rot: Math.random() * 360, rotSpeed: (Math.random() - 0.5) * 12, gravity: 0.35, drag: 0.98,
+            shape: Math.random() > 0.4 ? 'rect' : 'circle', opacity: 1
+          });
+        }
+        for (let i = 0; i < 70; i++) {
+          const angle = -3 * Math.PI / 4 + (Math.random() - 0.5) * 0.6;
+          const speed = Math.random() * 18 + 12;
+          this.particles.push({
+            x: window.innerWidth, y: window.innerHeight * 0.85, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+            size: Math.random() * 8 + 6, color: colors[Math.floor(Math.random() * colors.length)],
+            rot: Math.random() * 360, rotSpeed: (Math.random() - 0.5) * 12, gravity: 0.35, drag: 0.98,
+            shape: Math.random() > 0.4 ? 'rect' : 'circle', opacity: 1
+          });
+        }
+        if (!this.isRunning) { this.isRunning = true; this.animate(); }
+      },
+      fireHearts(startX, startY) {
+        Sound.playPop();
+        const colors = ['#f43f5e', '#ec4899', '#fda4af', '#8b5cf6'];
+        for (let i = 0; i < 40; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 14 + 6;
+          this.particles.push({
+            x: startX || window.innerWidth / 2, y: startY || window.innerHeight / 2,
+            vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 4,
+            size: Math.random() * 14 + 10, color: colors[Math.floor(Math.random() * colors.length)],
+            rot: Math.random() * 360, rotSpeed: (Math.random() - 0.5) * 8, gravity: 0.25, drag: 0.96,
+            shape: 'heart', opacity: 1
+          });
+        }
+        if (!this.isRunning) { this.isRunning = true; this.animate(); }
+      },
+      animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          const p = this.particles[i];
+          p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.drag; p.vy *= p.drag;
+          p.rot += p.rotSpeed; p.opacity -= 0.007;
+          if (p.opacity <= 0 || p.y > this.canvas.height + 50) { this.particles.splice(i, 1); continue; }
+          this.ctx.save(); this.ctx.translate(p.x, p.y); this.ctx.rotate((p.rot * Math.PI) / 180);
+          this.ctx.globalAlpha = Math.max(0, p.opacity); this.ctx.fillStyle = p.color;
+          if (p.shape === 'rect') {
+            this.ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+          } else if (p.shape === 'circle') {
+            this.ctx.beginPath(); this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2); this.ctx.fill();
+          } else if (p.shape === 'heart') {
+            const s = p.size * 0.6;
+            this.ctx.beginPath(); this.ctx.moveTo(0, -s / 2);
+            this.ctx.bezierCurveTo(-s, -s, -s * 1.5, s / 3, 0, s * 1.2);
+            this.ctx.bezierCurveTo(s * 1.5, s / 3, s, -s, 0, -s / 2); this.ctx.fill();
+          }
+          this.ctx.restore();
+        }
+        if (this.particles.length > 0) requestAnimationFrame(() => this.animate());
+        else this.isRunning = false;
+      }
+    };
+
+    /* 4. Custom Cursor */
+    const Cursor = {
+      dot: document.getElementById('cursor-dot'), aura: document.getElementById('cursor-aura'),
+      mouseX: -100, mouseY: -100, auraX: -100, auraY: -100,
+      init() {
+        if (window.matchMedia('(hover: none)').matches) return;
+        window.addEventListener('mousemove', (e) => {
+          this.mouseX = e.clientX; this.mouseY = e.clientY;
+          this.dot.style.left = `${this.mouseX}px`; this.dot.style.top = `${this.mouseY}px`;
+        });
+        document.querySelectorAll('button, a, .polaroid-card, .scratch-canvas, .wax-seal, .bento-card, .scanner-wrapper').forEach(el => {
+          el.addEventListener('mouseenter', () => this.aura.classList.add('active'));
+          el.addEventListener('mouseleave', () => this.aura.classList.remove('active'));
+        });
+        this.animate();
+      },
+      animate() {
+        this.auraX += (this.mouseX - this.auraX) * 0.2;
+        this.auraY += (this.mouseY - this.auraY) * 0.2;
+        this.aura.style.left = `${this.auraX}px`; this.aura.style.top = `${this.auraY}px`;
+        requestAnimationFrame(() => this.animate());
+      }
+    };
+
+    /* 5. Gatekeeper Portal */
+    const Portal = {
+      element: document.getElementById('cosmic-portal'), scanner: document.getElementById('portal-scanner'),
+      progressRing: document.getElementById('scanner-progress-ring'), skipBtn: document.getElementById('portal-skip-btn'),
+      holding: false, progress: 0, timer: null,
+      init() {
+        if (sessionStorage.getItem('portal_unlocked') === 'true') {
+          this.element.style.display = 'none'; return;
+        }
+        const startHold = (e) => {
+          e.preventDefault(); this.holding = true; this.scanner.classList.add('is-holding');
+          Sound.playChime(440);
+          this.timer = setInterval(() => {
+            if (!this.holding) return;
+            this.progress += 2.5;
+            const offset = 408 - (this.progress / 100) * 408;
+            this.progressRing.style.strokeDashoffset = Math.max(0, offset);
+            if (this.progress % 10 === 0) Sound.playChime(440 + this.progress * 4);
+            if (this.progress >= 100) { clearInterval(this.timer); this.unlock(); }
+          }, 30);
+        };
+        const stopHold = () => {
+          if (!this.holding) return;
+          this.holding = false; this.scanner.classList.remove('is-holding'); clearInterval(this.timer);
+          if (this.progress < 100) { this.progress = 0; this.progressRing.style.strokeDashoffset = 408; }
+        };
+        this.scanner.addEventListener('mousedown', startHold); window.addEventListener('mouseup', stopHold);
+        this.scanner.addEventListener('touchstart', startHold, { passive: false }); window.addEventListener('touchend', stopHold);
+        this.skipBtn.addEventListener('click', () => this.unlock());
+      },
+      unlock() {
+        Sound.playFanfare(); Confetti.fireCannons();
+        this.element.classList.add('portal-unlocked'); sessionStorage.setItem('portal_unlocked', 'true');
+        setTimeout(() => { this.element.style.display = 'none'; }, 800);
+      }
+    };
+
+    /* 6. Cake & Candle Logic */
+    const Cake = {
+      stage: document.getElementById('cake-stage'), blowBtn: document.getElementById('blow-candles-btn'),
+      relightBtn: document.getElementById('relight-candles-btn'), micBtn: document.getElementById('mic-blow-toggle'),
+      wishCard: document.getElementById('wish-granted-card'), wishText: document.getElementById('wish-affirmation-text'),
+      fortuneBtn: document.getElementById('fortune-refresh-btn'), isExtinguished: false, micListening: false,
+      audioStream: null, analyser: null,
+      fortunes: [
+        "\"2026 is officially the year every wild dream you've whispered at 2 AM turns into reality. And I'll be right beside you cheering the loudest.\"",
+        "\"May your days be packed with zero stress, 100% genuine belly laughs, and sudden influxes of pure good luck. You deserve the entire world!\"",
+        "\"The universe took its time crafting you because perfection cannot be rushed. Prepare for your most unforgettable and rewarding year yet.\"",
+        "\"Whatever you choose to conquer next, know that you have an unstoppable force behind you: our friendship. Cheers to another golden chapter!\"",
+        "\"A million stars in the sky, but none shine with the loyalty, humor, and brilliance you bring into this life every single day.\""
+      ],
+      init() {
+        this.blowBtn.addEventListener('click', () => this.extinguish());
+        this.relightBtn.addEventListener('click', () => this.relight());
+        window.addEventListener('keydown', (e) => {
+          if (e.code === 'Space' && !this.isExtinguished && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            e.preventDefault(); this.extinguish();
+          }
+        });
+        this.micBtn.addEventListener('click', () => this.toggleMic());
+        this.fortuneBtn.addEventListener('click', () => {
+          Sound.playChime(660);
+          const rand = this.fortunes[Math.floor(Math.random() * this.fortunes.length)];
+          this.wishText.textContent = rand;
+        });
+      },
+      extinguish() {
+        if (this.isExtinguished) return;
+        this.isExtinguished = true; Sound.playBlow();
+        this.stage.classList.add('candles-extinguished');
+        this.blowBtn.style.display = 'none'; this.relightBtn.style.display = 'inline-flex';
+        setTimeout(() => {
+          Sound.playFanfare(); Confetti.fireCannons();
+          this.wishCard.style.display = 'block';
+          showToast('✨ Candles Extinguished! Wish Locked in the Stars!');
+        }, 500);
+        if (this.micListening) this.stopMic();
+      },
+      relight() {
+        this.isExtinguished = false; Sound.playChime(880);
+        this.stage.classList.remove('candles-extinguished');
+        this.blowBtn.style.display = 'inline-flex'; this.relightBtn.style.display = 'none';
+        this.wishCard.style.display = 'none';
+        showToast('🔥 Candles Relit! Make another wish anytime!');
+      },
+      async toggleMic() {
+        if (this.micListening) { this.stopMic(); return; }
+        try {
+          this.audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          Sound.init();
+          const source = Sound.ctx.createMediaStreamSource(this.audioStream);
+          this.analyser = Sound.ctx.createAnalyser(); this.analyser.fftSize = 256;
+          source.connect(this.analyser);
+          this.micListening = true; this.micBtn.classList.add('listening');
+          this.micBtn.innerHTML = '<span>🎙️ Listening... Blow into mic!</span>';
+          const buffer = new Uint8Array(this.analyser.frequencyBinCount);
+          const checkMic = () => {
+            if (!this.micListening || this.isExtinguished) return;
+            this.analyser.getByteFrequencyData(buffer);
+            let sum = 0; for (let i = 0; i < buffer.length; i++) sum += buffer[i];
+            const avg = sum / buffer.length;
+            if (avg > 55) { this.extinguish(); return; }
+            requestAnimationFrame(checkMic);
+          };
+          checkMic();
+        } catch (err) { showToast('⚠️ Microphone access unavailable or denied.'); }
+      },
+      stopMic() {
+        this.micListening = false; this.micBtn.classList.remove('listening');
+        this.micBtn.innerHTML = '<span>🎙️ Blow with Microphone</span>';
+        if (this.audioStream) { this.audioStream.getTracks().forEach(t => t.stop()); this.audioStream = null; }
+      }
+    };
+
+    /* 7. Memory Vault */
+    const Memories = {
+      modal: document.getElementById('memory-modal'), closeBtn: document.getElementById('modal-close-btn'),
+      photoSlot: document.getElementById('modal-photo-slot'), tagSlot: document.getElementById('modal-tag-slot'),
+      titleSlot: document.getElementById('modal-title-slot'), dateSlot: document.getElementById('modal-date-slot'),
+      storySlot: document.getElementById('modal-story-slot'), soundtrackSlot: document.getElementById('modal-soundtrack-slot'),
+      data: {
+        '1': {
+          title: "The Infinite Roadtrip", date: "July • Lost with no GPS & Zero Regrets", tag: "ROADTRIP CHAOS",
+          story: "Remember when we took a 'quick detour' that turned into a 4-hour scenic detour through the middle of nowhere? We had half a bag of sour candy, the car windows rolled all the way down, and we screamed every single lyric at the top of our lungs until the sun went down. That sunset was legendary, but the laughter was even better.",
+          soundtrack: "Midnight City — M83"
+        },
+        '2': {
+          title: "2 AM Epiphanies", date: "Midnight Sessions • Over Cold Tea & Pizza", tag: "LATE NIGHT TALKS",
+          story: "The conversations where we solved all the world's problems, dissected our biggest existential fears, and admitted secrets we've never spoken to another human being. You are the only person who can keep up with my train of thought when it goes completely off the rails.",
+          soundtrack: "Sparks — Coldplay"
+        },
+        '3': {
+          title: "Concert Euphoria", date: "Autumn • Lost Voices & Endless Energy", tag: "UNFILTERED ADRENALINE",
+          story: "Standing in that crowd with lasers slicing through the darkness, bass vibrating right through our ribs, and that exact moment when the beat dropped and confetti rained down like snow. We barely had our voices left for three days afterward, and it was worth every single second.",
+          soundtrack: "A Sky Full of Stars — Coldplay"
+        },
+        '4': {
+          title: "Laughter Until Crying", date: "Spring • The Forbidden Inside Joke", tag: "UNCONTROLLABLE HUMOR",
+          story: "That completely ridiculous moment that wasn't even supposed to be funny, but once our eyes met, we both completely lost it. Trying to stay quiet made it 100 times worse until tears were streaming down our faces and we couldn't breathe. Nobody else gets it, and that's the best part.",
+          soundtrack: "Tongue Tied — GROUPLOVE"
+        },
+        '5': {
+          title: "Through Every Storm", date: "Always • The Unbreakable Promise", tag: "LIFE PARTNERSHIP",
+          story: "No matter how heavy things got or what curveballs the universe threw our way, having you in my corner turned insurmountable mountains into small hills. Thank you for showing up without hesitation, every single time.",
+          soundtrack: "Count on Me — Bruno Mars"
+        }
+      },
+      init() {
+        document.querySelectorAll('.polaroid-card').forEach(card => {
+          card.addEventListener('click', () => this.open(card.getAttribute('data-memory-id'), card));
+        });
+        this.closeBtn.addEventListener('click', () => this.close());
+        this.modal.addEventListener('click', (e) => { if (e.target === this.modal) this.close(); });
+      },
+      open(id, cardEl) {
+        Sound.playChime(720); const mem = this.data[id]; if (!mem) return;
+        this.photoSlot.innerHTML = cardEl.querySelector('.polaroid-photo').innerHTML;
+        this.tagSlot.textContent = mem.tag; this.titleSlot.textContent = mem.title;
+        this.dateSlot.textContent = mem.date; this.storySlot.textContent = mem.story;
+        this.soundtrackSlot.textContent = mem.soundtrack;
+        this.modal.classList.add('open');
+      },
+      close() { this.modal.classList.remove('open'); }
+    };
+
+    /* 8. Scratch Engine */
+    const ScratchEngine = {
+      init() {
+        ['1', '2', '3'].forEach(id => {
+          const canvas = document.getElementById(`scratch-canvas-${id}`);
+          if (!canvas) return;
+          const ctx = canvas.getContext('2d');
+          const wrapper = canvas.parentElement;
+          canvas.width = wrapper.offsetWidth || 340;
+          canvas.height = wrapper.offsetHeight || 240;
+
+          const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+          grad.addColorStop(0, '#334155'); grad.addColorStop(0.3, '#64748b'); grad.addColorStop(0.5, '#f59e0b');
+          grad.addColorStop(0.7, '#8b5cf6'); grad.addColorStop(1, '#334155');
+          ctx.fillStyle = grad; ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.font = 'bold 14px var(--font-sans)'; ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center';
+          ctx.fillText('✨ SCRATCH WITH MOUSE / FINGER ✨', canvas.width / 2, canvas.height / 2 + 5);
+
+          let isScratching = false, scratchedCount = 0, isCleared = false;
+          const scratch = (x, y) => {
+            if (isCleared) return;
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath(); ctx.arc(x, y, 24, 0, Math.PI * 2); ctx.fill();
+            scratchedCount++;
+            if (scratchedCount % 8 === 0) {
+              Sound.playChime(1000 + Math.random() * 400);
+              const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+              let transparentPixels = 0;
+              for (let i = 3; i < imgData.data.length; i += 32) { if (imgData.data[i] === 0) transparentPixels++; }
+              const ratio = transparentPixels / (imgData.data.length / 32);
+              if (ratio > 0.45) {
+                isCleared = true; Sound.playFanfare(); Confetti.fireCannons();
+                canvas.style.opacity = '0'; setTimeout(() => { canvas.style.display = 'none'; }, 400);
+                showToast('🏆 Superpower Revealed!');
+              }
+            }
+          };
+
+          const getPos = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+          };
+
+          canvas.addEventListener('mousedown', (e) => { isScratching = true; const p = getPos(e); scratch(p.x, p.y); });
+          window.addEventListener('mouseup', () => { isScratching = false; });
+          canvas.addEventListener('mousemove', (e) => { if (isScratching) { const p = getPos(e); scratch(p.x, p.y); } });
+          canvas.addEventListener('touchstart', (e) => { isScratching = true; const p = getPos(e); scratch(p.x, p.y); }, { passive: true });
+          canvas.addEventListener('touchmove', (e) => { if (isScratching) { const p = getPos(e); scratch(p.x, p.y); } }, { passive: true });
+          canvas.addEventListener('touchend', () => { isScratching = false; });
+        });
+      }
+    };
+
+    /* 9. Envelope & Letter */
+    const Envelope = {
+      box: document.getElementById('envelope-box'), seal: document.getElementById('wax-seal-btn'),
+      sheet: document.getElementById('letter-sheet'), isUnsealed: false,
+      init() {
+        this.seal.addEventListener('click', () => this.unseal());
+        document.getElementById('edit-letter-trigger-btn').addEventListener('click', () => {
+          Personalize.open(); document.getElementById('input-letter-body').focus();
+        });
+        document.getElementById('print-keepsake-btn').addEventListener('click', () => window.print());
+      },
+      unseal() {
+        if (this.isUnsealed) return;
+        this.isUnsealed = true; Sound.playWaxSnap();
+        this.box.classList.add('unsealed');
+        setTimeout(() => {
+          this.sheet.style.display = 'block'; Sound.playFanfare(); Confetti.fireCannons();
+          showToast('💌 Letter Unsealed!');
+        }, 500);
+      }
+    };
+
+    /* 10. Fireworks & Sky Lanterns */
+    const FireworksSky = {
+      canvas: document.getElementById('fireworks-interactive-canvas'), container: document.getElementById('fireworks-sky-box'),
+      input: document.getElementById('wish-lantern-input'), launchBtn: document.getElementById('launch-lantern-btn'),
+      ctx: null, rockets: [], sparks: [],
+      init() {
+        this.ctx = this.canvas.getContext('2d'); this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.canvas.addEventListener('click', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          this.launchRocket(e.clientX - rect.left, e.clientY - rect.top);
+        });
+        this.launchBtn.addEventListener('click', () => this.createLantern());
+        this.input.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.createLantern(); });
+        setInterval(() => {
+          const rect = this.canvas.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const rx = Math.random() * this.canvas.width * 0.8 + this.canvas.width * 0.1;
+            const ry = Math.random() * this.canvas.height * 0.5 + 40;
+            this.launchRocket(rx, ry);
+          }
+        }, 3200);
+        this.animate();
+      },
+      resize() { this.canvas.width = this.container.offsetWidth; this.canvas.height = this.container.offsetHeight; },
+      launchRocket(targetX, targetY) {
+        Sound.playFirework();
+        const startX = targetX + (Math.random() - 0.5) * 60;
+        const startY = this.canvas.height;
+        const color = ['#f43f5e', '#8b5cf6', '#06b6d4', '#f59e0b', '#10b981', '#f472b6'][Math.floor(Math.random() * 6)];
+        this.rockets.push({
+          x: startX, y: startY, targetX, targetY, vx: (targetX - startX) * 0.05,
+          vy: -Math.sqrt(2 * 0.45 * (startY - targetY)), gravity: 0.45, color
+        });
+      },
+      explode(x, y, color) {
+        for (let i = 0; i < 75; i++) {
+          const angle = Math.random() * Math.PI * 2, speed = Math.random() * 6 + 1.5;
+          this.sparks.push({
+            x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+            color, alpha: 1, decay: Math.random() * 0.018 + 0.012, gravity: 0.12, drag: 0.96
+          });
+        }
+      },
+      createLantern() {
+        const text = this.input.value.trim();
+        if (!text) { showToast('✍️ Please type a dream or wish first!'); return; }
+        Sound.playFanfare(); Confetti.fireHearts(window.innerWidth / 2, window.innerHeight / 2);
+        const lantern = document.createElement('div');
+        lantern.className = 'sky-lantern'; lantern.innerHTML = '🏮'; lantern.title = `"${text}"`;
+        const startLeft = Math.random() * (this.container.offsetWidth - 80) + 40;
+        lantern.style.left = `${startLeft}px`; lantern.style.bottom = `60px`;
+        this.container.appendChild(lantern);
+
+        let bottom = 60, horizontal = startLeft, hSpeed = (Math.random() - 0.5) * 0.8;
+        const floatInterval = setInterval(() => {
+          bottom += 1.2; horizontal += hSpeed;
+          lantern.style.bottom = `${bottom}px`; lantern.style.left = `${horizontal}px`;
+          if (bottom > this.container.offsetHeight + 60) { clearInterval(floatInterval); lantern.remove(); }
+        }, 30);
+
+        lantern.addEventListener('click', () => {
+          Sound.playChime(880); showToast(`🏮 Stored Wish: "${text}"`);
+        });
+        this.input.value = ''; showToast('🏮 Wish Lantern Released into the Cosmos!');
+      },
+      animate() {
+        this.ctx.fillStyle = 'rgba(7, 9, 19, 0.22)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        for (let i = this.rockets.length - 1; i >= 0; i--) {
+          const r = this.rockets[i];
+          r.x += r.vx; r.y += r.vy; r.vy += r.gravity;
+          this.ctx.fillStyle = r.color; this.ctx.beginPath(); this.ctx.arc(r.x, r.y, 3, 0, Math.PI * 2); this.ctx.fill();
+          if (r.vy >= 0 || r.y <= r.targetY) { this.explode(r.x, r.y, r.color); this.rockets.splice(i, 1); }
+        }
+        for (let i = this.sparks.length - 1; i >= 0; i--) {
+          const s = this.sparks[i];
+          s.x += s.vx; s.y += s.vy; s.vx *= s.drag; s.vy *= s.drag; s.vy += s.gravity; s.alpha -= s.decay;
+          if (s.alpha <= 0) { this.sparks.splice(i, 1); continue; }
+          this.ctx.save(); this.ctx.globalAlpha = Math.max(0, s.alpha); this.ctx.fillStyle = s.color;
+          this.ctx.beginPath(); this.ctx.arc(s.x, s.y, 2, 0, Math.PI * 2); this.ctx.fill(); this.ctx.restore();
+        }
+        requestAnimationFrame(() => this.animate());
+      }
+    };
+
+    /* 11. Personalization Engine */
+    const Personalize = {
+      drawer: document.getElementById('drawer-overlay'), openBtn: document.getElementById('open-customize-btn'),
+      closeBtn: document.getElementById('close-drawer-btn'), form: document.getElementById('customize-form'),
+      copyBtn: document.getElementById('copy-share-link-btn'), resetBtn: document.getElementById('reset-defaults-btn'),
+      nameInput: document.getElementById('input-recipient-name'), nickInput: document.getElementById('input-nickname'),
+      senderInput: document.getElementById('input-sender-name'), milestoneInput: document.getElementById('input-milestone'),
+      letterInput: document.getElementById('input-letter-body'),
+      defaults: {
+        name: "Alex", nickname: "Partner-in-Crime", sender: "Your Best Friend", milestone: "2026",
+        letter: "They say people enter our lives for a reason, but stumbling into someone who shares your exact degree of madness, loyalty, and passion? That is once-in-a-lifetime cosmic luck.\n\nLooking back at everything we’ve navigated together—the triumphs that felt like magic, the moments when life tested us, and the ordinary days made extraordinary just because you were there—I am endlessly proud to stand by your side.\n\nAs you step into 2026, I hope you see yourself through the eyes of those who love you: brilliant, fiercely kind, relentlessly resilient, and capable of moving mountains. Never doubt the immense light you bring to this world.\n\nHere is to another 365 days of belly laughs, conquering big dreams, and creating memories we’ll still be laughing about when we’re ninety years old."
+      },
+      init() {
+        this.openBtn.addEventListener('click', () => this.open());
+        this.closeBtn.addEventListener('click', () => this.close());
+        this.drawer.addEventListener('click', (e) => { if (e.target === this.drawer) this.close(); });
+        this.form.addEventListener('submit', (e) => { e.preventDefault(); this.save(); });
+        this.copyBtn.addEventListener('click', () => this.copyShareLink());
+        this.resetBtn.addEventListener('click', () => this.reset());
+        this.loadState();
+      },
+      open() { Sound.playChime(660); this.drawer.classList.add('open'); },
+      close() { this.drawer.classList.remove('open'); },
+      save() {
+        const state = {
+          name: this.nameInput.value.trim() || this.defaults.name,
+          nickname: this.nickInput.value.trim() || this.defaults.nickname,
+          sender: this.senderInput.value.trim() || this.defaults.sender,
+          milestone: this.milestoneInput.value.trim() || this.defaults.milestone,
+          letter: this.letterInput.value.trim() || this.defaults.letter
+        };
+        localStorage.setItem('bestie_greeting_2026', JSON.stringify(state));
+        this.applyState(state); this.close(); Sound.playFanfare(); Confetti.fireCannons();
+        showToast('✨ Personalization updated successfully!');
+      },
+      reset() {
+        localStorage.removeItem('bestie_greeting_2026'); window.location.hash = '';
+        this.applyState(this.defaults); this.close();
+        showToast('🔄 Restored default bestie celebration preset.');
+      },
+      loadState() {
+        let state = { ...this.defaults };
+        if (window.location.hash.length > 1) {
+          try {
+            const p = new URLSearchParams(window.location.hash.substring(1));
+            if (p.get('name')) state.name = p.get('name');
+            if (p.get('nickname')) state.nickname = p.get('nickname');
+            if (p.get('sender')) state.sender = p.get('sender');
+            if (p.get('milestone')) state.milestone = p.get('milestone');
+          } catch (e) {}
+        } else {
+          const saved = localStorage.getItem('bestie_greeting_2026');
+          if (saved) { try { state = { ...state, ...JSON.parse(saved) }; } catch (e) {} }
+        }
+        this.applyState(state);
+      },
+      applyState(state) {
+        this.nameInput.value = state.name; this.nickInput.value = state.nickname;
+        this.senderInput.value = state.sender; this.milestoneInput.value = state.milestone;
+        this.letterInput.value = state.letter;
+
+        document.querySelectorAll('.recipient-name').forEach(el => el.textContent = state.name);
+        document.getElementById('nav-milestone').textContent = state.milestone;
+        document.getElementById('letter-salutation-name').textContent = state.name;
+        document.getElementById('letter-signature-text').textContent = state.sender;
+
+        const letterSlot = document.getElementById('letter-body-content');
+        letterSlot.innerHTML = '';
+        state.letter.split('\n\n').forEach(pText => {
+          if (pText.trim()) {
+            const p = document.createElement('p'); p.textContent = pText.trim(); letterSlot.appendChild(p);
+          }
+        });
+      },
+      copyShareLink() {
+        const name = encodeURIComponent(this.nameInput.value.trim() || this.defaults.name);
+        const nickname = encodeURIComponent(this.nickInput.value.trim() || this.defaults.nickname);
+        const sender = encodeURIComponent(this.senderInput.value.trim() || this.defaults.sender);
+        const milestone = encodeURIComponent(this.milestoneInput.value.trim() || this.defaults.milestone);
+        const url = `${window.location.origin}${window.location.pathname}#name=${name}&nickname=${nickname}&sender=${sender}&milestone=${milestone}`;
+        navigator.clipboard.writeText(url).then(() => {
+          Sound.playChime(900); showToast('🔗 Shareable personalized link copied to clipboard!');
+        }).catch(() => { showToast('⚠️ Share URL: ' + url); });
+      }
+    };
+
+    /* 12. Add Memory Modal */
+    const AddMemoryModal = {
+      modal: document.getElementById('add-memory-modal'), btn: document.getElementById('add-memory-btn'),
+      closeBtn: document.getElementById('close-add-modal-btn'), form: document.getElementById('add-memory-form'),
+      init() {
+        this.btn.addEventListener('click', () => { Sound.playChime(660); this.modal.classList.add('open'); });
+        this.closeBtn.addEventListener('click', () => this.modal.classList.remove('open'));
+        this.modal.addEventListener('click', (e) => { if (e.target === this.modal) this.modal.classList.remove('open'); });
+        this.form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const title = document.getElementById('new-memory-title').value.trim();
+          const date = document.getElementById('new-memory-date').value.trim();
+          const story = document.getElementById('new-memory-story').value.trim();
+          const song = document.getElementById('new-memory-song').value.trim() || 'Golden Hour — JVKE';
+          if (!title || !story) return;
+
+          const newId = 'custom_' + Date.now();
+          Memories.data[newId] = { title, date, tag: 'CUSTOM MEMORY', story, soundtrack: song };
+
+          const card = document.createElement('div');
+          card.className = 'polaroid-card'; card.setAttribute('data-memory-id', newId);
+          card.innerHTML = `
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo">
+              <svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="240" fill="#1e1b4b"/>
+                <circle cx="150" cy="120" r="50" fill="#f43f5e" opacity="0.6"/>
+                <text x="150" y="130" fill="#ffffff" font-size="40" text-anchor="middle">✨</text>
+              </svg>
+            </div>
+            <div class="polaroid-caption">${title}</div>
+            <div class="polaroid-date">${date}</div>
+          `;
+          card.addEventListener('click', () => Memories.open(newId, card));
+          const grid = document.getElementById('memories-grid');
+          grid.insertBefore(card, this.btn);
+
+          this.modal.classList.remove('open'); this.form.reset();
+          Sound.playFanfare(); Confetti.fireCannons();
+          showToast('📸 New memory pinned to the vault!');
+        });
+      }
+    };
+
+    /* 13. Accolade Generator */
+    const AccoladeGenerator = {
+      quotes: [
+        "\"Finding a friend who matches your exact frequency of ambition, silliness, and loyalty is rarer than a supernova. You are that miracle.\"",
+        "\"You are the only person I would willingly share my last fry with. That is the highest honor known to humanity.\"",
+        "\"You have this superpower of turning an exhausting, awful week into a laugh marathon with just a five-minute voice note.\"",
+        "\"If aliens came down and demanded to see Earth's finest human specimen, I would immediately point at you with pride.\"",
+        "\"Thank you for existing, for being relentlessly yourself, and for never letting me do stupid things alone.\"",
+        "\"You are pure sunshine mixed with a healthy dose of pure hurricane. Never ever change.\""
+      ],
+      init() {
+        const textEl = document.getElementById('accolade-text');
+        document.getElementById('generate-accolade-btn').addEventListener('click', () => {
+          Sound.playChime(780);
+          textEl.textContent = this.quotes[Math.floor(Math.random() * this.quotes.length)];
+        });
+      }
+    };
+
+    /* Global Actions */
+    function setupGlobalActions() {
+      document.getElementById('hero-confetti-btn').addEventListener('click', () => {
+        Confetti.fireCannons(); showToast('🎉 Confetti Explosion!');
+      });
+      document.getElementById('hero-hug-btn').addEventListener('click', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        Confetti.fireHearts(rect.left + rect.width / 2, rect.top);
+        if (navigator.vibrate) navigator.vibrate([80, 50, 80]);
+        showToast('💖 Cosmic Hug Transmitted!');
+      });
+      const sfxBtn = document.getElementById('sfx-toggle-btn');
+      sfxBtn.addEventListener('click', () => {
+        Sound.enabled = !Sound.enabled;
+        if (Sound.enabled) {
+          sfxBtn.classList.add('active'); sfxBtn.textContent = '🔊';
+          Sound.playChime(880); showToast('🔊 Sound FX Enabled');
+        } else {
+          sfxBtn.classList.remove('active'); sfxBtn.textContent = '🔇';
+          showToast('🔇 Sound FX Muted');
+        }
+      });
+      const musicBtn = document.getElementById('music-toggle-btn');
+      musicBtn.addEventListener('click', () => {
+        const isPlaying = Sound.toggleMusic();
+        if (isPlaying) {
+          musicBtn.classList.add('music-playing', 'active'); showToast('🎵 Ambient Lullaby Music Box Playing');
+        } else {
+          musicBtn.classList.remove('music-playing', 'active'); showToast('⏸️ Music Box Paused');
+        }
+      });
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+          if (window.scrollY >= sec.offsetTop - 150) current = sec.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+        });
+      });
+    }
+
+    function showToast(msg) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast'; toast.innerHTML = msg;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    /* Initialize Everything */
+    window.addEventListener('DOMContentLoaded', () => {
+      StarsCanvas.init(); Confetti.init(); Cursor.init();
+      Portal.init(); Cake.init(); Memories.init();
+      ScratchEngine.init(); Envelope.init(); FireworksSky.init();
+      Personalize.init(); AddMemoryModal.init(); AccoladeGenerator.init();
+      setupGlobalActions();
+    });
+  </script>
+</body>
+</html>
